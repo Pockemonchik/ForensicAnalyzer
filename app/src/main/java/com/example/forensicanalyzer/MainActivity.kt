@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.navigation_overview)
                 }
                 R.id.navigation_cloud -> {
-                    navController.navigate(R.id.navigation_overview)
+                    navController.navigate(R.id.navigation_cloud)
                 }
 
             }

@@ -4,6 +4,7 @@
     <string name="title_report">Исследовать</string>
     <string name="title_overview">Обзор</string>
     <string name="title_cloud">Облако</string>
+    <string name="cloud_head_title">Облачные вычисления</string>
 
     <string name="overview_head_title">Исследования</string>
     <!-- TODO: Remove or change this placeholder text -->
