@@ -10,6 +10,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="head_title">#244CAA</color>
     <color name="menu_bg">#E8EFFF</color>
-
+    <color name="grey1">#F5F7FC</color>
+    <color name="green1">#E8F7EB</color>
+    <color name="black_text">#242833</color>
+    <color name="grey_text">#5D6373</color>
 
 </resources>

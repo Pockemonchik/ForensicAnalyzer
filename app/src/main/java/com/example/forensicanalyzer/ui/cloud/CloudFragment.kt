@@ -40,7 +40,7 @@ class CloudFragment : Fragment() {
     tabLayout.setupWithViewPager(viewPager)
 
 
-      return root
+    return root
   }
 
 }

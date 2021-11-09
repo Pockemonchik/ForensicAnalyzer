@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private val addReportClickListener: View.OnClickListener = View.OnClickListener { view ->
         when (view.id) {
             R.id.closeImageView -> {
-                binding.addReportContainer.visibility = GONE
+                GONE.also { binding.addReportContainer.visibility = it }
             }
         }
 
