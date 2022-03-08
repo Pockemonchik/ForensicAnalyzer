@@ -4,19 +4,21 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.lifecycle.Observer
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.forensicanalyzer.R
+import com.example.forensicanalyzer.db.reports.ReportViewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
 @Suppress("DEPRECATION")
 class OverviewFragment : Fragment() {
 
-  private lateinit var overviewViewModel: OverviewViewModel
+  private lateinit var overviewViewModel: ReportViewModel
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -24,35 +26,19 @@ class OverviewFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     overviewViewModel =
-            ViewModelProvider(this).get(OverviewViewModel::class.java)
+            ViewModelProvider(this).get(ReportViewModel::class.java)
 
     val root = inflater.inflate(R.layout.fragment_overview, container, false)
 
-    var reportList = ArrayList<ReportListItem>()
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1a", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1aaa", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1aaaaaa", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1aaaaaaaaaaa", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1aaaaaaaaa", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1aaaaaaaaaaa", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
-    reportList.add(ReportListItem(R.drawable.report_icon,"Исследование НЖМД #1", Date(2018, 12, 31)))
 
 
     var reportListView : RecyclerView = root.findViewById(R.id.reportListView)
     reportListView.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
     var adapter = ReportAdapter()
     reportListView.adapter = adapter
-    adapter.setData(reportList)
-
-
+    overviewViewModel.getAll().observe(viewLifecycleOwner, Observer {report ->
+      adapter?.setData(report)
+    })
 
 
     return root

@@ -6,15 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.forensicanalyzer.R
+import com.example.forensicanalyzer.db.reports.Report
 
 class ReportAdapter() : RecyclerView.Adapter<ReportAdapter.ViewHolder>(){
 
    // private var reportList = emptyList<ReportListItem>()
-    private var reportList = ArrayList<ReportListItem>()
+    private var reportList = emptyList<Report>()
 
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
 
@@ -38,16 +40,21 @@ class ReportAdapter() : RecyclerView.Adapter<ReportAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.reportImage?.setImageResource(reportList[position].reportImageId)
-        holder.reportName?.text = reportList[position].reportName
-        holder.reportDate?.text = reportList[position].reportDate.toString()
+        when(reportList[position].type){
+            "usb"->holder.reportImage?.setImageResource(R.drawable.report_icon)
+            "phone"->holder.reportImage?.setImageResource(R.drawable.image_icon)
+            "hdd"->holder.reportImage?.setImageResource(R.drawable.audio_icon)
+            else -> holder.reportImage?.setImageResource(R.drawable.report_icon)
+        }
+        holder.reportName?.text = reportList[position].name
+        holder.reportDate?.text = reportList[position].date.toString()
     }
 
     override fun getItemCount(): Int {
         return reportList.size
     }
 
-    fun setData(reportList: ArrayList<ReportListItem>){
+    fun setData(reportList: List<Report>){
         this.reportList = reportList
         notifyDataSetChanged()
     }
