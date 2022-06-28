@@ -56,15 +56,16 @@ class DetailReportFragment : Fragment() {
 
         //list of files view
         var fileList = ArrayList<DetailReportListItem>()
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
-        fileList.add(DetailReportListItem(R.drawable.report_icon, "Файл с серктными данными"))
+        fileList.add(DetailReportListItem(R.drawable.report_icon, "Cекретный_документ.docx"))
+        fileList.add(DetailReportListItem(R.drawable.services_icon, "Секретариат_видео.mp4"))
+        fileList.add(DetailReportListItem(R.drawable.report_icon, "Секретные технологии.txt"))
+        fileList.add(DetailReportListItem(R.drawable.image_icon, "Секретные_фото.jpg"))
+        fileList.add(DetailReportListItem(R.drawable.audio_icon, "Песня_с_секретом.mp3"))
+        fileList.add(DetailReportListItem(R.drawable.report_icon, "Cекретный_документ23.docx"))
+        fileList.add(DetailReportListItem(R.drawable.image_icon, "Секретные_фото123.jpg"))
+        fileList.add(DetailReportListItem(R.drawable.audio_icon, "Песня_с_секретом333.mp3"))
+        fileList.add(DetailReportListItem(R.drawable.services_icon, "Секретариат_видео555.mp4"))
+        fileList.add(DetailReportListItem(R.drawable.report_icon, "Секретные_технологии.txt"))
         var fileListView : RecyclerView = root.findViewById(R.id.fileListView)
         fileListView.layoutManager = LinearLayoutManager(
             activity,
